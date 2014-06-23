@@ -11,7 +11,7 @@ set nonumber
 set backspace=indent,eol,start
 set history=1000
 set showcmd
-set showmode
+set noshowmode
 "set gcr=a:blinkon0		"Disable cursor blink
 set visualbell
 set autoread			"Reload files changed outside vim
