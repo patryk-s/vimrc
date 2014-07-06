@@ -5,6 +5,7 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>n :set number!<CR>
 nnoremap <Leader>p :set paste!<CR>
+noremap <silent><F4> :NERDTreeToggle<CR>
 
 
 set nonumber
