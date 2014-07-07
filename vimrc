@@ -52,7 +52,7 @@ filetype plugin on
 filetype indent on
 
 "set listchars=tab:\ \ ,trail:·
-set listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:▸\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
 set nowrap		"Don't wrap lines
 set linebreak	"Wrap lines at convenient points
@@ -72,4 +72,5 @@ set sidescrolloff=15
 set sidescroll=1
 
 let g:solarized_termcolors=256
+let g:airline_powerline_fonts=1
 colorscheme solarized
