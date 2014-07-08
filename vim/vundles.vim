@@ -22,6 +22,12 @@ Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
+Plugin 'bufexplorer.zip'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vcscommand.vim'
 
 " tComment
 Plugin 'tComment'

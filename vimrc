@@ -5,8 +5,16 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>n :set number!<CR>
 nnoremap <Leader>p :set paste!<CR>
+nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+noremap <silent><F2> :BufExplorerVerticalSplit<CR>
+noremap <silent><F3> :FufFile<CR>
 noremap <silent><F4> :NERDTreeToggle<CR>
+nnoremap <silent><F5> :GundoToggle<CR>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 set nonumber
 set backspace=indent,eol,start
@@ -74,3 +82,15 @@ set sidescroll=1
 let g:solarized_termcolors=256
 let g:airline_powerline_fonts=1
 colorscheme solarized
+
+if has('gui_running')
+	set guifont=Source\ Code\ Pro\ 12
+	set lines=999 columns=999
+	set number
+	set list
+endif
+
+" let g:miniBufExplBRSplit = 0
+let g:bufExplorerSplitBelow=0
+let g:bufExplorerSplitRight=0        " Split left.
+let g:bufExplorerVertSize=10          " New split window is n columns wide.
