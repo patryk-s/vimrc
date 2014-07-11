@@ -10,6 +10,7 @@ noremap <silent><F2> :BufExplorerVerticalSplit<CR>
 noremap <silent><F3> :FufFile<CR>
 noremap <silent><F4> :NERDTreeToggle<CR>
 nnoremap <silent><F5> :GundoToggle<CR>
+noremap <silent><F6> :TagbarToggle<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

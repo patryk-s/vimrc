@@ -29,6 +29,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vcscommand.vim'
 
+Plugin 'scrooloose/nerdcommenter'
 " tComment
 Plugin 'tComment'
 nnoremap // :TComment<CR>
@@ -43,6 +44,7 @@ Plugin 'honza/vim-snippets'
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = "context"
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -50,7 +52,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 "CTags
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
