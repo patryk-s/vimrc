@@ -63,8 +63,8 @@ filetype indent on
 "set listchars=tab:\ \ ,trail:·
 set listchars=tab:▸\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
-set nowrap		"Don't wrap lines
-set linebreak	"Wrap lines at convenient points
+" set nowrap		"Don't wrap lines
+" set linebreak	"Wrap lines at convenient points
 
 set foldmethod=marker
 "set foldnestmax=3		"deepest fold is 3 levels
