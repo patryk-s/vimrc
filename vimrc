@@ -1,16 +1,25 @@
 set nocompatible
 
+if has("autocmd")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 nnoremap <leader>ev :split ~/.vimrc<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>n :set number!<CR>
 nnoremap <Leader>p :set paste!<CR>
 nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+" Search and replace word under cursor (\*)
+nnoremap <Leader>* :%s/\<<C-r><C-w>\>//gc<Left>
+noremap <Leader>! !!$SHELL<CR>
 noremap <silent><F2> :BufExplorerVerticalSplit<CR>
 noremap <silent><F3> :FufFile<CR>
 noremap <silent><F4> :NERDTreeToggle<CR>
 nnoremap <silent><F5> :GundoToggle<CR>
 noremap <silent><F6> :TagbarToggle<CR>
+map <silent><F7> :setlocal spell! spelllang=pl<CR>
+imap <silent><F7> <ESC>:setlocal spell! spelllang=pl<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -37,6 +46,7 @@ set matchtime=5
 set splitbelow
 set splitright
 set hidden
+set clipboard=""
 
 "set modeline
 "set modelines=5
@@ -61,7 +71,9 @@ filetype plugin on
 filetype indent on
 
 "set listchars=tab:\ \ ,trail:·
-set listchars=tab:▸\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
+" set listchars=tab:▸\ ,eol:¶,trail:·,extends:»,precedes:« " Unprintable chars mapping
+" set listchars=tab:▸\ ,eol:¬,trail:·,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:▸\ ,eol:↲,trail:·,extends:»,precedes:« " Unprintable chars mapping
 
 " set nowrap		"Don't wrap lines
 " set linebreak	"Wrap lines at convenient points
