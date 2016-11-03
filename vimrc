@@ -107,3 +107,21 @@ endif
 let g:bufExplorerSplitBelow=0
 let g:bufExplorerSplitRight=0        " Split left.
 let g:bufExplorerVertSize=10          " New split window is n columns wide.
+
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
+
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
