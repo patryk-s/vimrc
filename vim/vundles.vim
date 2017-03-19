@@ -18,7 +18,11 @@ Plugin 'mhinz/vim-signify'
 Plugin 'bling/vim-bufferline'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'ludovicchabant/vim-lawrencium'
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+" Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
@@ -28,6 +32,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vcscommand.vim'
+Plugin 'fatih/vim-go'
 
 Plugin 'scrooloose/nerdcommenter'
 " tComment
