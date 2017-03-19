@@ -41,10 +41,12 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab' 
+Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+" only use git
+let g:signify_vcs_list = [ 'git' ]
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
