@@ -11,15 +11,16 @@ nnoremap <Leader>n :set number!<CR>
 nnoremap <Leader>p :set paste!<CR>
 nnoremap <Leader>R :RainbowParenthesesToggle<CR>
 " Search and replace word under cursor (\*)
-nnoremap <Leader>* :%s/\<<C-r><C-w>\>//gc<Left>
+nnoremap <Leader>* :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 noremap <Leader>! !!$SHELL<CR>
 noremap <silent><F2> :BufExplorerVerticalSplit<CR>
 noremap <silent><F3> :FufFile<CR>
 noremap <silent><F4> :NERDTreeToggle<CR>
 nnoremap <silent><F5> :GundoToggle<CR>
 noremap <silent><F6> :TagbarToggle<CR>
-map <silent><F7> :setlocal spell! spelllang=pl<CR>
-imap <silent><F7> <ESC>:setlocal spell! spelllang=pl<CR>
+map <silent><F7> :setlocal spell! spelllang=en<CR>
+imap <silent><F7> <ESC>:setlocal spell! spelllang=en<CR>
+nnoremap <silent><F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo @"<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
