@@ -54,6 +54,7 @@ set clipboard=""
 
 syntax on
 set background=dark
+set t_Co=16
 
 " Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vim/vundles.vim"))
@@ -93,9 +94,11 @@ set scrolloff=3			"Start scrolling 3 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
+let g:solarized_termcolors=16
 let g:airline_powerline_fonts=1
 colorscheme solarized
+highlight! link SignColumn LineNr
 
 if has('gui_running')
 	set guifont=Source\ Code\ Pro\ 12
