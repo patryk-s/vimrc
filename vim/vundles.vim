@@ -18,7 +18,11 @@ Plugin 'mhinz/vim-signify'
 Plugin 'bling/vim-bufferline'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'ludovicchabant/vim-lawrencium'
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+" Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
@@ -28,6 +32,11 @@ Plugin 'mileszs/ack.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vcscommand.vim'
+Plugin 'fatih/vim-go'
+Plugin 'diepm/vim-rest-console'
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+Plugin 'HerringtonDarkholme/yats.vim'
 
 Plugin 'scrooloose/nerdcommenter'
 " tComment
@@ -36,10 +45,12 @@ nnoremap // :TComment<CR>
 vnoremap // :TComment<CR>
 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab' 
+Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
+" only use git
+let g:signify_vcs_list = [ 'git' ]
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
