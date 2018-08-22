@@ -30,6 +30,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" With ':R program', open a new window and insert program output, i.e:
+"  :R find -mtime -8 | xargs grep vim
+:command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+
 set nonumber
 set backspace=indent,eol,start
 set history=1000
@@ -61,7 +65,7 @@ set t_Co=16
 
 " Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+	source ~/.vim/vundles.vim
 endif
 
 set autoindent
@@ -116,24 +120,24 @@ let g:bufExplorerSplitRight=0        " Split left.
 let g:bufExplorerVertSize=10          " New split window is n columns wide.
 
 if has("autocmd")
-  " Enable file type detection
-  filetype on
+	" Enable file type detection
+	filetype on
 
-  " Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType puppet setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+	" Syntax of these languages is fussy over tabs Vs spaces
+	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType puppet setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-  " Customisations based on house-style (arbitrary)
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType groovy setlocal ts=4 sts=4 sw=4 expandtab
+	" Customisations based on house-style (arbitrary)
+	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd FileType groovy setlocal ts=4 sts=4 sw=4 expandtab
 
-  " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
-  " Treat Jenkinsfile files as groovy
-  autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy
+	" Treat .rss files as XML
+	autocmd BufNewFile,BufRead *.rss setfiletype xml
+	" Treat Jenkinsfile files as groovy
+	autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy
 endif
