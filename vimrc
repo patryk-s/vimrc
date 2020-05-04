@@ -9,7 +9,7 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>n :set number!<CR>
 nnoremap <Leader>p :set paste!<CR>
-nnoremap <Leader>R :RainbowParenthesesToggle<CR>
+nnoremap <Leader>R :RainbowToggle<CR>
 " Search and replace word under cursor (\*)
 nnoremap <Leader>* :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 noremap <Leader>! !!$SHELL<CR>
@@ -24,13 +24,21 @@ nnoremap <silent><F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo
 nnoremap <silent><F9> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap <leader>r :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
-
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" With ':R program', open a new window and insert program output, i.e:
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" With ':R program', open a new window and insert program output, i.e: 
 "  :R find -mtime -8 | xargs grep vim
 :command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
 
@@ -60,7 +68,8 @@ set clipboard=""
 "set modelines=5
 
 syntax on
-set background=light
+set background=dark
+" set background=light
 set t_Co=16
 
 " Use Vundle plugin to manage all other plugins
@@ -102,8 +111,14 @@ set sidescrolloff=15
 set sidescroll=1
 
 " let g:solarized_termcolors=256
-let g:solarized_termcolors=16
+" let g:solarized_termcolors=16
 let g:airline_powerline_fonts=1
+" let g:airline_theme = 'powerlineish'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 colorscheme solarized
 highlight! link SignColumn LineNr
 
@@ -119,6 +134,34 @@ let g:bufExplorerSplitBelow=0
 let g:bufExplorerSplitRight=0        " Split left.
 let g:bufExplorerVertSize=10          " New split window is n columns wide.
 
+"" NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+" let g:NERDTreeWinSize = 50
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+let g:ale_linters = {
+    \ 'sh': ['language_server'],
+    \ 'go': ['golint', 'go vet'],
+    \ 'python': ['flake8'],
+    \ }
+
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\   'json': ['fixjson'],
+\}
+
 if has("autocmd")
 	" Enable file type detection
 	filetype on
@@ -129,13 +172,16 @@ if has("autocmd")
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 	" Customisations based on house-style (arbitrary)
+	autocmd FileType sh setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 	autocmd FileType groovy setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype gitcommit setlocal spell textwidth=72
 
+	autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
 	" Treat Jenkinsfile files as groovy

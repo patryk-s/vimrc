@@ -11,8 +11,10 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins
 
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'ericbn/vim-solarized'
 Plugin 'mhinz/vim-startify'
 Plugin 'mhinz/vim-signify'
 Plugin 'bling/vim-bufferline'
@@ -27,16 +29,29 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'bufexplorer.zip'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'mileszs/ack.vim'
+Plugin 'luochen1990/rainbow'
+" Plugin 'mileszs/ack.vim'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'sjl/gundo.vim'
-Plugin 'kien/ctrlp.vim'
+let g:gundo_prefer_python3 = 1
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vcscommand.vim'
+Plugin 'splitjoin.vim'
 Plugin 'fatih/vim-go'
 Plugin 'diepm/vim-rest-console'
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+Plugin 'w0rp/ale'
+let g:ale_lint_on_text_changed = 'never'
+Plugin 'google/vim-jsonnet'
+Plugin 'christianrondeau/vim-base64'
+Plugin 'andrewstuart/vim-kubernetes'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'mzlogin/vim-markdown-toc'
+let g:vmt_auto_update_on_save = 0
 
 Plugin 'scrooloose/nerdcommenter'
 " tComment
@@ -61,6 +76,14 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" vim-go settings
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
 
 "CTags
 Plugin 'majutsushi/tagbar'
